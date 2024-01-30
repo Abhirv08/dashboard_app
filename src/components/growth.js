@@ -1,22 +1,27 @@
-import Image from 'next/image'
-import React from 'react'
-import customer2 from '../assets/customer_avatar_2.png'
+"use client";
+import { useState } from 'react';
+import Image from 'next/image';
+import customer2 from '../assets/customer_avatar_2.png';
+import Chart from './graph';
 const Growth = () => {
+    const [timeline, setTimeline] = useState('yearly');
+
     return (
         <div className='flex flex-col gap-4 w-full'>
             <div className='p-6 rounded-2xl bg-white'>
                 <div className='flex justify-between items-center w-full'>
                     <div className='text-xl leading-normal font-semibold tracking-[-0.2px] '>Growth</div>
                     <div className='text-sm font-medium traacking-[-0.3px] flex items-center gap-1'>
-                        <select className="appearance-none outline-none focus:outline-none text-[#454545] bg-white">
-                            <option value="latest">Yearly</option>
-                            <option value="oldest">Monthly</option>
+                        <select onChange={(e) => setTimeline(e.target.value)} className="appearance-none outline-none focus:outline-none text-[#454545] bg-white">
+                            <option value="monthly">Monthly</option>
+                            <option value="daily">Daily</option>
                         </select>
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
                             <path d="M3.5 5.86163L7 9.36163L10.5 5.86163" stroke="#7D7D7D" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </div>
                 </div>
+                <Chart timeline={timeline} />
             </div>
             <div className='grid grid-cols-3 gap-4'>
                 <div className='flex flex-col justify-between p-2 sm:p-4 gap-4 bg-white leading-normal rounded-2xl'>
