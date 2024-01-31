@@ -8,7 +8,7 @@ const Quarter_goal = () => {
             <div className='flex flex-col items-center'>
                 <div className='pb-4 text-xl font-semibold leading-normal tracking-[-0.2px]'>Quarter Goal</div>
                 <div className='flex items-center gap-2'>
-                    <Image src={quarter_goals} alt="quarter_goals" />
+                    <div role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style={{ "--value": 84 }}></div>
                 </div>
             </div>
             <div className='flex items-center pt-4'>

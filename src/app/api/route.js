@@ -2,7 +2,6 @@ import connectDB from "@/db";
 import profit from "@/models/profit";
 import { NextResponse } from "next/server";
 
-
 export async function POST(req) {
     try {
         await connectDB();
@@ -12,12 +11,13 @@ export async function POST(req) {
 
         const { timeline } = body;
 
-        if (timeline === "monthly") {
-            const downsampledData = calculateMonthlyAverage(rawData);
-            return NextResponse.json({ "data": downsampledData });
-        }
+        let downsampledData;
 
-        const downsampledData = calculateDailyAverage(rawData);
+        if (timeline === "monthly") {
+            downsampledData = calculateMonthlyAverage(rawData);
+        } else if (timeline === "daily") {
+            downsampledData = calculateDailyAverage(rawData);
+        }
 
         return NextResponse.json({ "data": downsampledData });
     } catch (error) {

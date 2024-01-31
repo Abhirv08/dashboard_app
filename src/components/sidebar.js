@@ -97,7 +97,7 @@ const Sidebar = () => {
                                             </div>
                                             {(item.subItems && open) && <div>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
-                                                    <path d="M4 6.5L8 10.5L12 6.5" stroke="#7D7D7D" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M4 6.5L8 10.5L12 6.5" stroke="#7D7D7D" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
                                             </div>}
                                         </div>
