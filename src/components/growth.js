@@ -4,7 +4,7 @@ import Image from 'next/image';
 import customer2 from '../assets/customer_avatar_2.png';
 import Chart from './graph';
 const Growth = () => {
-    const [timeline, setTimeline] = useState('yearly');
+    const [timeline, setTimeline] = useState('monthly');
 
     return (
         <div className='flex flex-col gap-4 w-full'>
