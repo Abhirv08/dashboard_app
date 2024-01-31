@@ -8,23 +8,20 @@ export async function POST(req) {
 
 
         const rawData = await profit.find({});
-        console.log('Entered the serverless function')
 
-        return NextResponse.json({ "dummy": rawData });
+        const body = await req.json();
 
-        // const body = await req.json();
+        const { timeline } = body;
 
-        // const { timeline } = body;
+        let downsampledData;
 
-        // let downsampledData;
+        if (timeline === "monthly") {
+            downsampledData = calculateMonthlyAverage(rawData);
+        } else if (timeline === "daily") {
+            downsampledData = calculateDailyAverage(rawData);
+        }
 
-        // if (timeline === "monthly") {
-        //     downsampledData = calculateMonthlyAverage(rawData);
-        // } else if (timeline === "daily") {
-        //     downsampledData = calculateDailyAverage(rawData);
-        // }
-
-        // return NextResponse.json({ "data": downsampledData });
+        return NextResponse.json({ "data": downsampledData });
     } catch (error) {
         return NextResponse.json(error);
     }

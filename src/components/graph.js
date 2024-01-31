@@ -411,7 +411,6 @@ const Chart = ({ timeline }) => {
                     borderColor: '#999',
                 }],
                 xaxis: [{
-                    x: new Date('01 July 2016').getTime(),
                     borderColor: '#999',
                     yAxisIndex: 0,
                 }]
