@@ -5,21 +5,25 @@ import { NextResponse } from "next/server";
 export async function POST(req) {
     try {
         await connectDB();
-        const rawData = await profit.find({});
 
-        const body = await req.json();
+        console.log('Entered the serverless function')
 
-        const { timeline } = body;
+        return NextResponse.json({ "dummy": "data" });
+        // const rawData = await profit.find({});
 
-        let downsampledData;
+        // const body = await req.json();
 
-        if (timeline === "monthly") {
-            downsampledData = calculateMonthlyAverage(rawData);
-        } else if (timeline === "daily") {
-            downsampledData = calculateDailyAverage(rawData);
-        }
+        // const { timeline } = body;
 
-        return NextResponse.json({ "data": downsampledData });
+        // let downsampledData;
+
+        // if (timeline === "monthly") {
+        //     downsampledData = calculateMonthlyAverage(rawData);
+        // } else if (timeline === "daily") {
+        //     downsampledData = calculateDailyAverage(rawData);
+        // }
+
+        // return NextResponse.json({ "data": downsampledData });
     } catch (error) {
         return NextResponse.json(error);
     }
