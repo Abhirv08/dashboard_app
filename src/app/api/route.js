@@ -6,10 +6,11 @@ export async function POST(req) {
     try {
         await connectDB();
 
+
+        const rawData = await profit.find({});
         console.log('Entered the serverless function')
 
-        return NextResponse.json({ "dummy": "data" });
-        // const rawData = await profit.find({});
+        return NextResponse.json({ "dummy": rawData });
 
         // const body = await req.json();
 
